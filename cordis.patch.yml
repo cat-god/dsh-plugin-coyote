@@ -1,0 +1,12 @@
+# 装进 DSH
+#
+# entry 的 `id` 必须等于本模块导出的命名空间名（`coyote`，见 index.js 的
+# `export const name`）。DSH 的 settings.write() 用
+#   configEditor.entries().find((row) => row.options.id === ns)
+# 定位可写目标，再用 `entry.fiber.runtime.Config` 取 schema —— id 与命名空间不同名时，
+# 设置页里改任何一项都会抛 `No configurable plugin entry "coyote"`。
+# `name` 仍然是包名 dsh-plugin-coyote，二者职责不同，不能混为一谈。
+- insert:
+    - id: coyote
+      name: dsh-plugin-coyote
+      config: {}

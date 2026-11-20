@@ -1,0 +1,1 @@
+﻿Vendored from qrcode-terminal 0.12.0 (vendor/QRCode), MIT / Apache-2.0; original QRCode.js (c) 2009 Kazuhiko Arase, MIT.

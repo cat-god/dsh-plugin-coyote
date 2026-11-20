@@ -1,0 +1,7 @@
+# 统一用 LF 存进仓库。Windows 上 checkout 出来是什么由 core.autocrlf 决定，
+# 但仓库里一份字节始终一致 —— 否则 diff 会因为换行符整文件变红。
+* text=auto eol=lf
+
+# 二进制 / vendor 原样
+*.png binary
+*.wav binary

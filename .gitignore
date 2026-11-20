@@ -1,0 +1,28 @@
+# 依赖与运行时产物
+node_modules/
+*.log
+
+# 插件家目录（状态、二维码、日志）绝不该进仓库
+coyote-3/
+outbox/
+state/
+state.json
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 备份文件（我习惯改前留 .bak-时间戳，不作为产物发布）
+*.bak
+*.bak-*
+*.bak.*
+*.orig
+*.rej
+
+# 临时脚本
+*.tmp
+*.tmp.*
+*.log.*

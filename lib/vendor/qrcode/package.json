@@ -1,0 +1,8 @@
+{
+  "//": "这份 QRCode.js 是 Kazuhiko Arase 写的 CommonJS 实现（MIT，见 SOURCE.txt），从 qrcode-terminal 0.12.0 里 vendored 过来，一个字节没改。",
+  "//2": "qq-bridge 的 package.json 是 type:module，会把这里的 .js 当 ESM 解析（里面是 require/module.exports，直接 SyntaxError）。",
+  "//3": "所以在本目录放一个 type:commonjs，把这个子树的模块类型改回来 —— 比把 10 个文件全改名成 .cjs 更省事，也不动原文件。",
+  "name": "qrcode-vendor",
+  "private": true,
+  "type": "commonjs"
+}
