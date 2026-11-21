@@ -332,6 +332,16 @@ test('默认值里有五个护栏旋钮', () => {
     ok(coyoteSrc.includes(k), `缺少护栏旋钮 ${k}`);
   }
 });
+// 看门狗必须大于官方中继 60s 心跳间隔，否则「没人在玩」被错杀成「链路断了」
+//（qq-bridge 2026-11-21 实修：旧默认 15s 导致配对后 20 秒必被掐）。
+test('看门狗默认 90 秒且任何帧都算活性（heartbeat 不进 default）', () => {
+  ok(coyoteSrc.includes('watchdogMs: 90000'), '看门狗默认值不是 90000');
+  ok(!coyoteSrc.includes('watchdogMs: 15000'), '还残留旧默认 15000');
+  const i = coyoteSrc.indexOf('function handleFrame');
+  const head = coyoteSrc.slice(i, i + 900);
+  ok(head.includes('state.lastFrameAt = Date.now();'), 'handleFrame 顶部没有统一活性');
+  ok(head.includes("case 'heartbeat'"), '没有 heartbeat 分支');
+});
 test('coyoteStop 先掐补投再归零', () => {
   const i = coyoteSrc.indexOf('export function coyoteStop');
   const body = coyoteSrc.slice(i, i + 1600);
